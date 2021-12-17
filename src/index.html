@@ -3,50 +3,46 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Project Starter</title>
+  <title>Postyeni | VFX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Don't change the paths of the following two lines - They are produced by webpack-->
   <link rel="stylesheet" href="stylesheets/main.css">
 </head>
 
-<body>
+<body id = "vfx-page">
   
   <!-- Your HTML goes here -->
-  <div class="container">
-    <div class="row col">
-      <h1>Top 10 Movies</h1>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+    <a class="navbar-brand montserrat" href="#">ROWAN POSTYENI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav abs-center-x">
+        <a class="nav-item nav-link active" href="#">VFX</a>
+        <a class="nav-item nav-link" href="#">Concept Art</a>
+        <a class="nav-item nav-link" href="#">About</a>
+      </div>
     </div>
+  </nav>
 
-    <form class="row">
-      <div class="col-9">
-        <input type="search" class="form-control" placeholder="Search...">
+  <main>
+    <section>
+      <div class="video-container">
+        <iframe class="video" src="https://www.youtube.com/embed/0lPxWhEbcyc"  allowfullscreen></iframe>
       </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-primary w-100">Search</button>
-      </div>
-    </form>
-  <div class="row my-5">
-    <div class="col-md-6">
-      <div class="row row-cols-5 row-cols-md-3">
-        <div class="col" id="m1"></div>
-        <div class="col" id="m2"></div>
-        <div class="col" id="m3"></div>
-        <div class="col" id="m4"></div>
-        <div class="col" id="m5"></div>
-        <div class="col" id="m6"></div>
-        <div class="col" id="m7"></div>
-        <div class="col" id="m8"></div>
-        <div class="col" id="m9"></div>
-        <div class="col" id="m10"></div>
-      </div>
-    </div>
-    <div class="col-md-6 featured">
-      Select a movie to display      
-
-    </div>
-  </div>
-</div>
+    </section>
+    <section class="info">
+      <img src="" alt="">
+      <p>This Icicle effect was a project to familiarize myself with Niagra's particle system, and an opportunity to utilize Houdini's simulation abilities which I brought into UE4 as a vertex animation.
+        <br>
+        <br>
+        <a href="https://docs.google.com/document/d/11D5t7kWhrtFKz5Wbb5LQlFaYnAhPjIql7v1JpdWP-mo/edit" target = "_blank" rel="noreferrer noopener">Steps of the process of the projects creation can be found here in an overview document.</a>
+        </p>
+    </section>
+  </main>
   
   
   <!-- Leave the following line as is at the end of body -->
