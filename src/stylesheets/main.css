@@ -92,7 +92,7 @@ main {
 }
 
 .info {
-    margin: 3rem;
+    margin: 1rem 0;
     padding: 1rem;
     background-color: #eee;
     border-radius: 10px;
@@ -110,6 +110,12 @@ main {
 
 .info a:hover {
     color:rgb(53, 86, 122)
+}
+
+.info img {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
 }
 
   @media only screen and (min-width: 992px) {
@@ -144,6 +150,42 @@ main {
         height: 100%;
         border: 0;
     
+    }
+
+    .info {
+        margin: 2rem;
+        padding: 1rem;
+        background-color: #eee;
+        border-radius: 10px;
+        display: flex;
+        flex-flow: nowrap;
+
+    }
+    
+    .info a {
+        text-decoration: none;
+        color: rgb(111, 167, 148);
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .info a:hover {
+        color:rgb(53, 86, 122)
+    }
+    
+    .info img {
+        display: block;
+        margin: 1rem;
+        width: 90%;
+        flex: 1;
+    }
+
+    .info p {
+        flex: 1;
+        margin: 4rem 1rem;
     }
 
   }
