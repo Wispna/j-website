@@ -190,7 +190,11 @@ main {
     text-align: center;
     padding: .5rem;
     line-height: 8rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
+}
+
+.concept img{
+    width: 100%;
 }
 
 footer {
@@ -305,6 +309,20 @@ footer img {
         margin: 2rem 1rem;
     }
 
+    .contact .email, .contact .resume {
+        margin: 0;
+    }
+
+    .concept {
+        width: 80%;
+        margin: 1rem auto;
+    }
+
+    .picture-display .img-thumbnail {
+        height: 9rem;
+        width: 9rem;
+        object-fit: cover;
+    }
 
     footer img {
         align-items: center;
