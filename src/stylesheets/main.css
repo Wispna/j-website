@@ -138,15 +138,16 @@ main {
 }
 
 .contact {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 2rem auto;
     display: flex;
     flex-flow: nowrap;
+    font-weight: bold;
 }
 
 .contact .email {
     flex: 1;
-    background-color:rgb(67, 194, 177);
+    background-color:rgb(131, 224, 212);
     border-radius: 0 5em;
     text-align: center;
     padding: 1rem;
@@ -157,24 +158,33 @@ main {
     flex: 1;
     text-align: center;
     line-height: 4rem;
-    border: 3px solid rgb(67, 194, 177);
+    border: 3px solid rgb(131, 224, 212);
     margin: 1rem;
     border-radius: 5rem 5rem;
 }
 
 .contact .links img {
-    width: 3rem;
-    height: 3rem;
-    margin: 1rem;
+    width: 2rem;
+    height: 2rem;
+    margin: .5rem;
 }
 
-.contact .email a {
+.contact a {
     color: black;
+}
+
+.contact a:hover {
+    color:rgb(53, 86, 122);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .contact .resume {
     flex: 1;
-    background-color:rgb(67, 194, 177);
+    background-color:rgb(131, 224, 212);
     border-radius: 5em 0;
     text-align: center;
     padding: 1rem;
@@ -282,6 +292,17 @@ footer img {
 
         margin: 4rem 2rem 2rem 1rem;
     }
+
+    .contact {
+        width: 60%;
+    }
+
+    .contact .links img {
+        width: 4rem;
+        height: 4rem;
+        margin: 2rem 1rem;
+    }
+
 
     footer img {
         align-items: center;
