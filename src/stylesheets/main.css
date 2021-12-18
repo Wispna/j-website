@@ -131,6 +131,7 @@ footer img {
     height: 3rem;
     width: 3rem;
     margin: 1rem 3rem;
+    object-fit: scale-down;
 }
 
   @media only screen and (min-width: 992px) {
