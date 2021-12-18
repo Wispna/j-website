@@ -100,7 +100,7 @@ main {
 
 .info a {
     text-decoration: none;
-    color: rgb(111, 167, 148);
+    color: rgb(67, 194, 177);
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -118,6 +118,60 @@ main {
     width: 100%;
 }
 
+.aboutr .portrait {
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 10px #ccc;
+    margin: 1rem auto;
+}
+
+.aboutr img {
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+}
+
+.contact {
+    display: flex;
+}
+
+.contact .email {
+    flex: 1;
+    background-color:rgb(67, 194, 177);
+    border-radius: 0 5em;
+    text-align: center;
+    padding: 3rem;
+}
+
+.contact .links {
+    flex: 1;
+    text-align: center;
+    line-height: 4rem;
+    border: 3px solid rgb(67, 194, 177);
+    margin: 1rem;
+    border-radius: 5rem 5rem;
+}
+
+.contact .links img {
+    width: 4rem;
+    height: 4rem;
+    margin: 3rem;
+}
+
+.contact .email a {
+    color: black;
+}
+
+.contact .resume {
+    flex: 1;
+    background-color:rgb(67, 194, 177);
+    border-radius: 5em 0;
+    text-align: center;
+    padding: 3rem;
+}
+
 footer {
     width: 100%;
     background-color: #eee;
@@ -131,7 +185,7 @@ footer img {
     height: 2rem;
     width: 2rem;
     object-fit: scale-down;
-    margin: .5rem .5rem .5rem 1rem;
+    margin: .5rem .5rem 2rem .5rem;
 }
 
   @media only screen and (min-width: 992px) {
@@ -180,7 +234,6 @@ footer img {
     
     .info a {
         text-decoration: none;
-        color: rgb(111, 167, 148);
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
@@ -202,6 +255,31 @@ footer img {
     .info p {
         flex: 1;
         margin: 4rem 1rem;
+    }
+
+    .aboutr {
+        display: flex;
+    }
+    .aboutr .portrait {
+        width: 20rem;
+        height: 20rem;
+    }
+    .aboutr .imgcontainer {
+        margin: 3rem;
+        flex: 1;
+    }
+    .aboutr .aboutblurb {
+        flex: 2;
+
+        margin: 4rem 2rem 2rem 1rem;
+    }
+
+    footer img {
+        align-items: center;
+        height: 3rem;
+        width: 3rem;
+        object-fit: scale-down;
+        margin: 1rem 3rem;
     }
 
   }
