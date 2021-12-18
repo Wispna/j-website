@@ -118,6 +118,21 @@ main {
     width: 100%;
 }
 
+footer {
+    width: 100%;
+    background-color: #eee;
+    text-align: center;
+    
+
+}
+
+footer img {
+    align-items: center;
+    height: 3rem;
+    width: 3rem;
+    margin: 1rem 3rem;
+}
+
   @media only screen and (min-width: 992px) {
     .abs-center-x {
         position: absolute;
