@@ -118,6 +118,10 @@ main {
     width: 100%;
 }
 
+.aboutr .imgcontainer {
+    width: 100%;
+}
+
 .aboutr .portrait {
     width: 40rem;
     height: 40rem;
