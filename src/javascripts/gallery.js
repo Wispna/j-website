@@ -11,8 +11,5 @@ export function gallery(){
         carousel_portfolio.innerHTML = `
             <img src="${p.image}" class="d-block w-100" alt="${p.name}">
         `
-       /* h_thumb.onclick = function(){
-           
-        }*/
     }
 }

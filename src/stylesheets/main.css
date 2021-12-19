@@ -197,6 +197,10 @@ main {
     width: 100%;
 }
 
+.picture-display .img-thumbnail {
+    margin-top: 1rem;
+}
+
 footer {
     width: 100%;
     background-color: #eee;
@@ -322,6 +326,7 @@ footer img {
         height: 9rem;
         width: 9rem;
         object-fit: cover;
+        margin-top: 1rem;
     }
 
     footer img {
