@@ -2,36 +2,69 @@ export const pictures = [
     {
         "id": 1,
         "name": "portfolio01",
-        "image": "https://images.unsplash.com/photo-1636325231746-f839caaf1119?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=60"
+        "image": "images/fireside.png"
     },
 
     {
         "id": 2,
         "name": "portfolio02",
-        "image": "https://images.unsplash.com/photo-1636316208839-aeae0cd3a879?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2532&q=80"
+        "image": "images/FA20_ART401A_DLongo_RPostyeni_A6.png"
     },
 
     {
         "id": 3,
         "name": "portfolio03",
-        "image": "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+        "image": "images/FA20_ART401A_DLongo_RPostyeni_A5.png"
     },
 
     {
         "id": 4,
         "name": "portfolio04",
-        "image": "https://images.unsplash.com/photo-1636325231746-f839caaf1119?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=60"
+        "image": "images/FA20_ART401A_DLongo_RPostyeni_A3.jpg"
     },
 
     {
         "id": 5,
         "name": "portfolio05",
-        "image": "https://images.unsplash.com/photo-1636325231746-f839caaf1119?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=60"
+        "image": "images/a03final.jpg"
     },
 
     {
         "id": 6,
         "name": "portfolio06",
-        "image": "https://images.unsplash.com/photo-1636325231746-f839caaf1119?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=60"
+        "image": "images/colorexploration.jpg"
+    },
+
+    {
+        "id": 7,
+        "name": "portfolio07",
+        "image": "images/FA19_ART301A_RUELOS_RowanPostyeni_A2_final.jpg"
+    },
+
+    {
+        "id": 8,
+        "name": "portfolio08",
+        "image": "images/5colors.jpg"
+    },
+
+    {
+        "id": 9,
+        "name": "portfolio09",
+        "image": "images/FA19_ART301B_RUELOS_RowanPostyeni_A02_P02_I06.jpg"
+    },
+    {
+        "id": 10,
+        "name": "portfolio10",
+        "image": "images/D61Tt3RVsAAw-Hi.png"
+    },
+    {
+        "id": 11,
+        "name": "portfolio11",
+        "image": "images/random.png"
+    },
+    {
+        "id": 12,
+        "name": "portfolio12",
+        "image": "images/FA20_ART401A_DLongo_RPostyeni_A9.jpg"
     },
 ]
