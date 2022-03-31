@@ -48,7 +48,7 @@
         </p>
       </div>
       
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion accordion-flush info-accordion" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -66,6 +66,13 @@
                 <h3>Houdini Simulation</h3>
                 <br>
                 <p>To start the endeavor, I needed a simulation of my icicle falling to the ground and shattering. This required a rigid body set up and solver, and I also incorporated a rbdpaint node to increase the shattering/fractures at the first impact point for a more visually appealing destruction.</p>
+                <br>
+                <picture>
+                  <source type = "image/webp" srcset="images/iceeffect1.webp">
+                  <source type = "image/jpg" srcset="images/iceeffect1.jpg">
+                  <img src="images/iceeffect1.jpg" alt="ice effect 1">
+                </picture>
+                <br>
                 <p>Within the solver, I also manipulated the forces to apply a wind that created a sort of ‘bounce/lift’ so the pieces didn’t simply hit the ground and immediately grow static.</p>
                 <br>
                 <h3>Export and bringing into UE4</h3>
@@ -94,11 +101,35 @@
                   The default material for a rigidbody VAT provided by SideFx looks like so:
                   </p>
                   <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect2.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect2.jpg">
+                    <img src="images/iceeffect2.jpg" alt="ice effect 2">
+                  </picture>
+                  <br>
                   <p>By modifying this material, I was able to plug in a dynamic parameter to the ‘Time’ pin...</p>
+                  <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect3.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect3.jpg">
+                    <img src="images/iceeffect3.jpg" alt="ice effect 3">
+                  </picture>
                   <br>
                   <p>...which then let me have control over the playing of the simulation within the niagra emitter. This method also had the added bonus of letting me speed/slow the timing of the simulation merely by adjusting values in the curve of the Frame portion of the dynamic parameter, meaning I wouldn’t have to go back to Houdini and reexport the simulation for minor timing tweaks.</p>
                   <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect4.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect4.jpg">
+                    <img src="images/iceeffect4.jpg" alt="ice effect 4">
+                  </picture>
+                  <br>
                   <p><u>Issue 3:</u> The Vertex Animation when exported, does not completely match the appearance of the simulation in Houdini. In particular, the first frame of the simulation does not match. This issue is brought up and known by SideFx in their documentation, however I still had to find a work around.</p>
+                  <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect5.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect5.jpg">
+                    <img src="images/iceeffect5.jpg" alt="ice effect 5">
+                  </picture>
                   <br>
                   <p><em>Above is the difference between the mesh put into the simulation (left) and the starting frame of the simulation after exporting the vertex animation (right).</em></p>
                   <br>
@@ -111,6 +142,12 @@
                   Luckily, this was possible thanks to the dynamic parameter for the frame, as mentioned in issue 2.
                   </p>
                   <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect6.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect6.jpg">
+                    <img src="images/iceeffect6.jpg" alt="ice effect 6">
+                  </picture>
+                  <br>
                   <p>Instead of playing the animation this time through the curve, I kept it static by holding the first frame.</p>
                   <br>
                   <h3>Conclusion...</h3>
@@ -120,6 +157,12 @@
                     <br>
                     <em>The ending node system for the Icicle...</em>
                   </p>
+                  <br>
+                  <picture>
+                    <source type = "image/webp" srcset="images/iceeffect7.webp">
+                    <source type = "image/jpg" srcset="images/iceeffect7.jpg">
+                    <img src="images/iceeffect7.jpg" alt="ice effect 7">
+                  </picture>
               </div>
             </div>
           </div>
@@ -140,7 +183,7 @@
         </p>
      </div>
 
-     <div class="accordion accordion-flush" id="accordionFlushExample2">
+     <div class="accordion accordion-flush info-accordion" id="accordionFlushExample2">
       <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -157,11 +200,23 @@
             <br>
             <p>To bring in the image, press the ‘d’ hotkey over the viewport, then navigate to the ‘Background’ tab.</p>
             <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect1.webp">
+              <source type = "image/jpg" srcset="images/motheffect1.jpg">
+              <img src="images/motheffect1.jpg" alt="moth effect 1">
+            </picture>
+            <br>
             <p>Select the proper view tab (we’ll be using ‘front’), then select the disk file of your reference. The bottom of the wing that connects to the body should be placed along the zero axis, as we will be mirroring this geometry later and want a clean connection at the bottom.</p>
             <br>
             <p>‘Auto-Place Image’ by default will be clicked on. Click it off and adjust the offset to get the proper position manually.</p>
             <br>
             <p>Now that we have our reference image in scene, drop a geo node at object level and then drop a curve node. Starting at the zero line, click along the edge to get the proper shape and close the curve.</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect2.webp">
+              <source type = "image/jpg" srcset="images/motheffect2.jpg">
+              <img src="images/motheffect2.jpg" alt="moth effect 2">
+            </picture>
             <br>
             <p>By default, the primitive type on the curve node will be polygon. Change this to ‘NURBS’ for a smoother curve. Check the ‘Close’ box as well to fill this curve in.</p>
             <br>
@@ -169,7 +224,19 @@
             <br>
             <p>Drop a mirror node, setting the direction to ‘Z’</p>
             <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect3.webp">
+              <source type = "image/jpg" srcset="images/motheffect3.jpg">
+              <img src="images/motheffect3.jpg" alt="moth effect 3">
+            </picture>
+            <br>
             <p>We now have a full moth with its wings slightly parted. Now for animating it. Drop a transform node before the mirror node. By setting keys in the x rotation our moth will be able to flap its wings. Drop a null node to complete the moth’s geo node.</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect4.webp">
+              <source type = "image/jpg" srcset="images/motheffect4.jpg">
+              <img src="images/motheffect4.jpg" alt="moth effect 4">
+            </picture>
             <br>
             <p><em>Our network.</em></p>
             <br>
@@ -181,17 +248,41 @@
             <br>
             <p>Now using the particles tab on the top menu, create a ‘source particle emitter’ using the wing geo.</p>
             <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect5.webp">
+              <source type = "image/jpg" srcset="images/motheffect5.jpg">
+              <img src="images/motheffect5.jpg" alt="moth effect 5">
+            </picture>
+            <br>
             <p>Our ‘Pop Source’ should scatter on the surface and use first context geometry. The birth tab:</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect6.webp">
+              <source type = "image/jpg" srcset="images/motheffect6.jpg">
+              <img src="images/motheffect6.jpg" alt="moth effect 6">
+            </picture>
             <br>
             <p>The life variance and probabilistic emission will give a variance to the spawning particles.</p>
             <br>
             <p>The Pop Force node applies some noise to the particles, but scale this down to be less extreme.</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect7.webp">
+              <source type = "image/jpg" srcset="images/motheffect7.jpg">
+              <img src="images/motheffect7.jpg" alt="moth effect 7">
+            </picture>
             <br>
             <p>Finally, close the geo node with a null.</p>
             <br>
             <h3>Fog</h3>
             <br>
             <p>Create a new geo node at object level. The fog is a straightforward network of one node.</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect8.webp">
+              <source type = "image/jpg" srcset="images/motheffect8.jpg">
+              <img src="images/motheffect8.jpg" alt="moth effect 8">
+            </picture>
             <br>
             <p>A low value keeps the fog from overwhelming the scene. In the properties tab, you can tone down the display density as well. (I used a .85 value)</p>
             <br>
@@ -203,11 +294,23 @@
             <br>
             <p>To keep the moth bright use a high intensity, and modify  the 'attenuation' tab values to keep the light from spreading through the entire fog.</p>
             <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect9.webp">
+              <source type = "image/jpg" srcset="images/motheffect9.jpg">
+              <img src="images/motheffect9.jpg" alt="moth effect 9">
+            </picture>
+            <br>
             <p>The particles should have a color as well, but do not need to influence the fog as strongly as the body. Navigate to the material palette and create a glow material. To assign this to the particles, navigate to the object level. On the geo node for the particles, go to the ‘render’ tab and select the glow material to assign it.</p>
             <br>
             <p>While we’re here, we’ll modify other settings for rendering the particles. On the geometry tab, we’ll want to change the sphere to circles and we’ll want to reduce the scale to about .2</p>
             <br>
             <p>To make sure our lighting settings influence the scene, we’ll have to modify settings on our render node. Our glow will fail to show in the fog without a ‘volume limit’ value set.</p>
+            <br>
+            <picture>
+              <source type = "image/webp" srcset="images/motheffect10.webp">
+              <source type = "image/jpg" srcset="images/motheffect10.jpg">
+              <img src="images/motheffect10.jpg" alt="moth effect 10">
+            </picture>
             <br>
             <p>Ta-Dah!</p>
           </div>

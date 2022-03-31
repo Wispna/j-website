@@ -118,6 +118,12 @@ main {
     width: 100%;
 }
 
+.info-accordion img {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
+}
+
 .aboutr .imgcontainer {
     width: 100%;
 }
@@ -309,6 +315,12 @@ footer img {
     .info-position p {
         flex: 1;
         margin: 4rem 1rem;
+    }
+
+    .info-accordion img {
+        display: block;
+        margin: 1rem;
+        width: 40%;
     }
 
 
