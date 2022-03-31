@@ -278,8 +278,7 @@ footer img {
         padding: 1rem;
         background-color: #eee;
         border-radius: 10px;
-        display: flex;
-        flex-flow: nowrap;
+        
 
     }
     
@@ -296,17 +295,22 @@ footer img {
         color:rgb(53, 86, 122)
     }
     
-    .info img {
+    .info-position {
+        display: flex;
+        flex-flow: nowrap;
+    }
+    .info-position picture {
         display: block;
         margin: 1rem;
         width: 90%;
         flex: 1;
     }
 
-    .info p {
+    .info-position p {
         flex: 1;
         margin: 4rem 1rem;
     }
+
 
     .aboutr {
         display: flex;

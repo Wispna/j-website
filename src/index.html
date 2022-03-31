@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Postyeni | VFX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Don't change the paths of the following two lines - They are produced by webpack-->
+  <!--<link rel="stylesheet" href="src/stylesheets/main.css">-->
+  <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+
+<body id = "vfx-page">
+  
+  <!-- Your HTML goes here -->
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+    <a class="navbar-brand montserrat" href="#">ROWAN POSTYENI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav abs-center-x">
+        <li><a class="nav-item nav-link active" href="/index.html">VFX</a></li>
+        <li><a class="nav-item nav-link" href="/conceptpage.html">Concept Art</a></li>
+        <li><a class="nav-item nav-link" href="/aboutpage.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="video-container">
+        <iframe class="video" src="https://www.youtube.com/embed/0lPxWhEbcyc"  allowfullscreen></iframe>
+      </div>
+    </section>
+    
+    <section class="info">
+      <h1 class="m-3 montserrat">Icicle Effect</h1>
+      <div class="info-position">
+        <picture>
+          <source type = "image/webp" srcset="images/icicle.webp">
+          <source type = "image/gif" srcset="images/icicle.gif">
+          <img src="images/icicle.gif" alt="icicle effect">
+        </picture>
+        <p>This Icicle effect was a project to familiarize myself with Niagra's particle system, and an opportunity to utilize Houdini's simulation abilities which I brought into UE4 as a vertex animation.
+        </p>
+      </div>
+      
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                More Details
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <p>This effect was an exploration of several things for me, as it was a first-time exploration of Niagra to begin with, but also an experiment with rbd simulation done in Houdini that was then brought into UE4 as a vertex animation.
+                <br>
+                <br>
+                This was done in Unreal 4.26 and Houdini 18.5.492
+                </p>
+                <br>
+                <h3>Houdini Simulation</h3>
+                <br>
+                <p>To start the endeavor, I needed a simulation of my icicle falling to the ground and shattering. This required a rigid body set up and solver, and I also incorporated a rbdpaint node to increase the shattering/fractures at the first impact point for a more visually appealing destruction.</p>
+                <p>Within the solver, I also manipulated the forces to apply a wind that created a sort of ‘bounce/lift’ so the pieces didn’t simply hit the ground and immediately grow static.</p>
+                <br>
+                <h3>Export and bringing into UE4</h3>
+                <br>
+                <p>With our simulation ready, next comes the export. I accomplished this using SideFx’s <u>vertex animation textures</u> ROP, which is part of Sidefx Labs.
+                  <br>
+                  <br>
+                  SideFx’s own walkthrough on the exporting process worked like a charm. Their video for this process is <a href="https://vimeo.com/427443116/9bf1abac5f">here.</a>
+                  <br>
+                  <br>
+                  Although the export worked without fault, I found three issues as I tried to implement the new vertex animation into my niagra vfx system. 
+                </p>
+                <br>
+                <h3>Problem Solving</h3>
+                <br>
+                <p><u>Issue 1:</u> The scale of the vertex simulation was far too large, and resizing the vertex animation in its particle emitter resulted in erratic motion and broke the simulation.
+                  <br>
+                  <br>
+                  Solution: <em>Resizing of the vertex animation has to be done on the Houdini side of the pipeline, not in Unreal.</em> Luckily resizing is straightforward as there’s a setting within the vertex animation textures ROP itself.
+                  <br>
+                  <br>
+                  <u>Issue 2:</u> The simulation played indefinitely regardless of whether the emitter was paused or playing. There is no way to properly time the simulation to the rest of the effect as it’s incapable of being paused nor does it have a beginning/end set.
+                  <br>
+                  <br>
+                  Solution: Diving into the material of the vertex animation allowed me to discover a solution.
+                  The default material for a rigidbody VAT provided by SideFx looks like so:
+                  </p>
+                  <br>
+                  <p>By modifying this material, I was able to plug in a dynamic parameter to the ‘Time’ pin...</p>
+                  <br>
+                  <p>...which then let me have control over the playing of the simulation within the niagra emitter. This method also had the added bonus of letting me speed/slow the timing of the simulation merely by adjusting values in the curve of the Frame portion of the dynamic parameter, meaning I wouldn’t have to go back to Houdini and reexport the simulation for minor timing tweaks.</p>
+                  <br>
+                  <p><u>Issue 3:</u> The Vertex Animation when exported, does not completely match the appearance of the simulation in Houdini. In particular, the first frame of the simulation does not match. This issue is brought up and known by SideFx in their documentation, however I still had to find a work around.</p>
+                  <br>
+                  <p><em>Above is the difference between the mesh put into the simulation (left) and the starting frame of the simulation after exporting the vertex animation (right).</em></p>
+                  <br>
+                  <p>Originally in the VFX system, I used a static mesh in the first half of the effect, which I then swapped out for the simulation in the second half when the Icicle is destroyed.
+                  <br>
+                  <br>
+                  However the differences between the two icicles were too noticeable. In the end, I had to ditch the static icicle mesh entirely, and use the VAT Icicle for both parts.
+                  <br>
+                  <br>
+                  Luckily, this was possible thanks to the dynamic parameter for the frame, as mentioned in issue 2.
+                  </p>
+                  <br>
+                  <p>Instead of playing the animation this time through the curve, I kept it static by holding the first frame.</p>
+                  <br>
+                  <h3>Conclusion...</h3>
+                  <br>
+                  <p>I was concerned about layering all the various elements needed for the Icicle material onto the VAT, however through the course of the project, I found building in the same VAT material didn’t create any issues. The Icicle material is the most complex material I’ve made, it contains an opacity mask with an emissive border that can swipe the crystal, a dissolve effect, along with the VAT and a base emissive value that works separately from the emissive line on the swipe effect. I wasn’t sure all these elements would be able to work together initially, but the VAT proved to be less daunting to work with than I initially feared.
+                    <br>
+                    <br>
+                    <em>The ending node system for the Icicle...</em>
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+    </section>
+    <section class="info">
+    <h1 class="m-3 montserrat">Valerie</h1>
+     <div class="info-position">
+      <picture>
+        <source type = "image/webp" srcset="images/valerie_PNG.webp">
+        <source type = "image/jpg" srcset="images/valerie_PNG.jpg">
+        <img src="images/valerie_PNG.jpg" alt="glowing moth">
+      </picture>
+      
+      <p>Valerie was a project with a focus on getting an atmospheric glowing effect in Houdini without the use of post-processing and compositing. To do this was a process of trial and error to find the right combination of light geometry and volumetric rendering.
+        </p>
+     </div>
+
+     <div class="accordion accordion-flush" id="accordionFlushExample2">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+            More Details
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
+          <div class="accordion-body">
+            <p>We will be creating a moth that flaps its wings and emits ember-like particles. The moth will glow through the night with an emissive light.</p>
+            <br>
+            <h3>First- Making The Moth</h3>
+            <br>
+            <p>To start, find or create a reference image for the shape of the wing. We will be creating a curve to follow the shape.</p>
+            <br>
+            <p>To bring in the image, press the ‘d’ hotkey over the viewport, then navigate to the ‘Background’ tab.</p>
+            <br>
+            <p>Select the proper view tab (we’ll be using ‘front’), then select the disk file of your reference. The bottom of the wing that connects to the body should be placed along the zero axis, as we will be mirroring this geometry later and want a clean connection at the bottom.</p>
+            <br>
+            <p>‘Auto-Place Image’ by default will be clicked on. Click it off and adjust the offset to get the proper position manually.</p>
+            <br>
+            <p>Now that we have our reference image in scene, drop a geo node at object level and then drop a curve node. Starting at the zero line, click along the edge to get the proper shape and close the curve.</p>
+            <br>
+            <p>By default, the primitive type on the curve node will be polygon. Change this to ‘NURBS’ for a smoother curve. Check the ‘Close’ box as well to fill this curve in.</p>
+            <br>
+            <p>Next, we give the moth a completed shape. Drop a transform node and put rotation in the x axis (I put a value of 19).</p>
+            <br>
+            <p>Drop a mirror node, setting the direction to ‘Z’</p>
+            <br>
+            <p>We now have a full moth with its wings slightly parted. Now for animating it. Drop a transform node before the mirror node. By setting keys in the x rotation our moth will be able to flap its wings. Drop a null node to complete the moth’s geo node.</p>
+            <br>
+            <p><em>Our network.</em></p>
+            <br>
+            <h3>Particles</h3>
+            <br>
+            <p>Create a second geo node. Inside, drop a ‘file merge’ node that references to the ‘valGeo_OUT’ null node from the first network.</p>
+            <br>
+            <p>The particles we will be creating should be affected by the movement of the moth’s wing animation. Drop a ‘trail’ node setting the result type to ‘Compute Velocity’. I scaled down the velocity scale to 0.6.</p>
+            <br>
+            <p>Now using the particles tab on the top menu, create a ‘source particle emitter’ using the wing geo.</p>
+            <br>
+            <p>Our ‘Pop Source’ should scatter on the surface and use first context geometry. The birth tab:</p>
+            <br>
+            <p>The life variance and probabilistic emission will give a variance to the spawning particles.</p>
+            <br>
+            <p>The Pop Force node applies some noise to the particles, but scale this down to be less extreme.</p>
+            <br>
+            <p>Finally, close the geo node with a null.</p>
+            <br>
+            <h3>Fog</h3>
+            <br>
+            <p>Create a new geo node at object level. The fog is a straightforward network of one node.</p>
+            <br>
+            <p>A low value keeps the fog from overwhelming the scene. In the properties tab, you can tone down the display density as well. (I used a .85 value)</p>
+            <br>
+            <h3>Lighting</h3>
+            <br>
+            <p>In order to get a glow-like aura of light around the moth, the moth will need to be a light source in the scene in order to affect the fog. Using the lights tab on the top right shelf, use the ‘geometry light’ option and select the moth.</p>
+            <br>
+            <p>Without the right settings, the moth will either be washed out by the fog, or the fog will illuminate too strongly from the intensity of the geometry light.</p>
+            <br>
+            <p>To keep the moth bright use a high intensity, and modify  the 'attenuation' tab values to keep the light from spreading through the entire fog.</p>
+            <br>
+            <p>The particles should have a color as well, but do not need to influence the fog as strongly as the body. Navigate to the material palette and create a glow material. To assign this to the particles, navigate to the object level. On the geo node for the particles, go to the ‘render’ tab and select the glow material to assign it.</p>
+            <br>
+            <p>While we’re here, we’ll modify other settings for rendering the particles. On the geometry tab, we’ll want to change the sphere to circles and we’ll want to reduce the scale to about .2</p>
+            <br>
+            <p>To make sure our lighting settings influence the scene, we’ll have to modify settings on our render node. Our glow will fail to show in the fog without a ‘volume limit’ value set.</p>
+            <br>
+            <p>Ta-Dah!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:r.postyeni@gmail.com"><img src="images/mail.jpg" alt="r.postyeni@gmail.com"></a>
+      
+    <a href="https://www.artstation.com/postyeni"><img src="images/artstation.jpg" alt="artstation"></a>
+      
+    <a href="https://www.linkedin.com/in/rowan-postyeni-795121141/"><img src="images/indeed.jpg" alt="indeed"></a>  
+  </footer>
+  
+  
+  <!-- Leave the following line as is at the end of body -->
+  <script src="javascripts/main.js"></script>
+
+</body>
+</html>
